@@ -1,0 +1,90 @@
+from tkinter import *
+import random
+window = Tk()
+window.title("DVD logo")
+window.attributes('-alpha', 0.0)
+top = Toplevel(window)
+top.attributes('-topmost', True)
+top.overrideredirect(True)
+window.focus_force()
+top.config(bg='grey')
+top.attributes("-transparentcolor", "grey")
+canvas = Canvas(top, bg='grey', highlightthickness=0)
+canvas.pack(fill='both', expand=True)
+top.geometry("2000x2000")
+canvas.create_rectangle(0, 0, 2000, 2000)
+barx=0
+bary=1000
+dvdlogo1=[[0, 0, 10, 50, 'light green'], [10, 0, 20, 10, 'light green'], [20, 10, 30, 40, 'light green'], [10, 40, 20, 50, 'light green'], [40, 10, 50, 40, 'light green'], [50, 40, 60, 50, 'light green'], [60, 10, 70, 40, 'light green'], [80, 0, 90, 50, 'light green'], [90, 0, 100, 10, 'light green'], [100, 10, 110, 40, 'light green'], [90, 40, 100, 50, 'light green'], [0, 60, 110, 70, 'light green']]
+dvdlogo2=[[0, 0, 10, 50, 'red'], [10, 0, 20, 10, 'red'], [20, 10, 30, 40, 'red'], [10, 40, 20, 50, 'red'], [40, 10, 50, 40, 'red'], [50, 40, 60, 50, 'red'], [60, 10, 70, 40, 'red'], [80, 0, 90, 50, 'red'], [90, 0, 100, 10, 'red'], [100, 10, 110, 40, 'red'], [90, 40, 100, 50, 'red'], [0, 60, 110, 70, 'red']]
+dvdlogo3=[[0, 0, 10, 50, 'light blue'], [10, 0, 20, 10, 'light blue'], [20, 10, 30, 40, 'light blue'], [10, 40, 20, 50, 'light blue'], [40, 10, 50, 40, 'light blue'], [50, 40, 60, 50, 'light blue'], [60, 10, 70, 40, 'light blue'], [80, 0, 90, 50, 'light blue'], [90, 0, 100, 10, 'light blue'], [100, 10, 110, 40, 'light blue'], [90, 40, 100, 50, 'light blue'], [0, 60, 110, 70, 'light blue']]
+dvdlogo4=[[0, 0, 10, 50, 'yellow'], [10, 0, 20, 10, 'yellow'], [20, 10, 30, 40, 'yellow'], [10, 40, 20, 50, 'yellow'], [40, 10, 50, 40, 'yellow'], [50, 40, 60, 50, 'yellow'], [60, 10, 70, 40, 'yellow'], [80, 0, 90, 50, 'yellow'], [90, 0, 100, 10, 'yellow'], [100, 10, 110, 40, 'yellow'], [90, 40, 100, 50, 'yellow'], [0, 60, 110, 70, 'yellow']]
+dvdlogo5=[[0, 0, 10, 50, '#ff00ff'], [10, 0, 20, 10, '#ff00ff'], [20, 10, 30, 40, '#ff00ff'], [10, 40, 20, 50, '#ff00ff'], [40, 10, 50, 40, '#ff00ff'], [50, 40, 60, 50, '#ff00ff'], [60, 10, 70, 40, '#ff00ff'], [80, 0, 90, 50, '#ff00ff'], [90, 0, 100, 10, '#ff00ff'], [100, 10, 110, 40, '#ff00ff'], [90, 40, 100, 50, '#ff00ff'], [0, 60, 110, 70, '#ff00ff']]
+thumbsup=[[0, 40, 30, 50, 'black'], [0, 50, 10, 110, 'black'], [10, 100, 30, 110, 'black'], [30, 50, 40, 100, 'black'], [40, 40, 50, 100, 'black'], [50, 100, 110, 110, 'black'], [110, 90, 120, 100, 'black'], [120, 40, 130, 90, 'black'], [80, 30, 120, 40, 'black'], [90, 0, 100, 30, 'black'], [70, 0, 90, 10, 'black'], [70, 10, 80, 20, 'black'], [60, 20, 70, 30, 'black'], [50, 30, 60, 40, 'black'], [80, 10, 90, 30, '#f0deaf'], [70, 20, 80, 40, '#f0deaf'], [60, 30, 70, 40, '#f0deaf'], [50, 40, 120, 90, '#f0deaf'], [10, 50, 40, 100, '#043ac4'], [30, 40, 40, 50, 'black'], [30, 100, 40, 110, 'black'], [50, 90, 110, 100, '#f0deaf']]
+dvdlogo=[dvdlogo1, dvdlogo2, dvdlogo3, dvdlogo4, dvdlogo5]
+def createimage(listtouse, size, x, y, dire=False, col=None):
+    if col==None:
+        if dire==False:
+            for i in range(len(listtouse)):
+                canvas.create_rectangle(x+listtouse[i][0]*size, y+listtouse[i][1]*size, x+listtouse[i][2]*size, y+listtouse[i][3]*size, fill=listtouse[i][4], outline="")
+        elif dire==True:
+            for i in range(len(listtouse)):
+                canvas.create_rectangle(x+listtouse[i][0]*-size, y+listtouse[i][1]*-size, x+listtouse[i][2]*-size, y+listtouse[i][3]*-size, fill=listtouse[i][4], outline="")
+    else:
+        if dire==False:
+            for i in range(len(listtouse)):
+                canvas.create_rectangle(x+listtouse[i][0]*size, y+listtouse[i][1]*size, x+listtouse[i][2]*size, y+listtouse[i][3]*size, fill=col, outline="")
+        elif dire==True:
+            for i in range(len(listtouse)):
+                canvas.create_rectangle(x+listtouse[i][0]*-size, y+listtouse[i][1]*-size, x+listtouse[i][2]*-size, y+listtouse[i][3]*-size, fill=col, outline="")
+x=random.randint(1, 1244)
+y=random.randint(1, 499)
+happy=0
+frame=0
+mylist=[-2, 2]
+xmov=mylist[random.randint(0, 1)]
+ymov=mylist[random.randint(0, 1)]
+def update():
+    global x, y, xmov, ymov, frame, happy, bary, barx
+    canvas.delete("all")
+    window.lift()
+    createimage(dvdlogo[frame], 0.3, x, y)
+    x+=xmov
+    y+=ymov
+    happy-=1
+    if happy>0:
+        createimage(thumbsup, 5, 300, 75)
+    wallx=False
+    wally=False
+    if x>=1885:
+        xmov=-2
+        frame+=1
+        wallx=True
+    if x<=0:
+        xmov=2
+        frame+=1
+        wallx=True
+    if y>=1060:
+        exit()
+    if y<=0:
+        ymov=2
+        frame+=1
+        wally=True
+    if ((y>=bary-30 and y<=bary-20) and x>barx-50 and x<barx+200):
+        ymov=-2
+        frame+=1
+    if wally==True and wallx==True:
+        happy=400
+    if frame>=len(dvdlogo):
+        frame=0
+    canvas.create_rectangle(barx, bary, barx+100, bary+15, fill="blue")
+    canvas.after(5, update)
+update()
+def onclick(event):
+    global barx, bary
+    if barx<1815 and event.char=="d": barx+=10
+    if event.char=="a" and barx!=0: barx-=10
+    if event.char=="s": bary+=10
+    if event.char=="w": bary-=10
+window.bind_all("<Key>", onclick)
+window.mainloop()
